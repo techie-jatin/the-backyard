@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Backyard Bistro & Grill — Coming Soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="c-image/backyard logo.ico">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#070808;
+  --surface:#0E0F0F;
+  --card:#141616;
+  --card-hover:#1C1E1E;
+  --border:#1F2323;
+  --border-light:#2E3434;
+  --text:#E8E6E3;
+  --text-dim:#8B8B84;
+  --green:#7EBF6D;
+  --green-light:#A8D88C;
+  --gold:#D4A853;
+  --gold-dim:rgba(212,168,83,0.12);
+  --radius:14px;
+  --radius-sm:8px;
+}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:2rem;
+  position:relative;
+  overflow:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:url("c-image/the backyard 01 bg.jpg") center/cover;
+  opacity:0.15;
+  z-index:0;
+}
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background:linear-gradient(180deg,#070808 0%,transparent 40%,transparent 60%,#070808 100%);
+  z-index:1;
+}
+.hero{
+  position:relative;z-index:2;
+  text-align:center;
+  max-width:600px;
+}
+.logo{
+  width:220px;height:auto;display:block;
+  margin:0 auto 2rem;
+  filter:drop-shadow(0 4px 20px rgba(0,0,0,0.5));
+}
+.badge{
+  display:inline-block;
+  background:var(--gold-dim);
+  color:var(--gold);
+  font-size:0.65rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.15em;
+  padding:0.4rem 1.2rem;
+  border-radius:50px;
+  margin-bottom:1.5rem;
+}
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:2.8rem;
+  font-weight:600;
+  line-height:1.15;
+  margin-bottom:1rem;
+}
+h1 em{
+  font-style:italic;
+  color:var(--green-light);
+}
+p{
+  font-size:0.9rem;
+  color:var(--text-dim);
+  line-height:1.6;
+  margin-bottom:2.5rem;
+}
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:2rem;
+  margin-bottom:2.5rem;
+}
+.countdown-item{
+  text-align:center;
+}
+.countdown-item .num{
+  font-family:'Playfair Display',serif;
+  font-size:2.4rem;
+  font-weight:600;
+  color:var(--green-light);
+  display:block;
+  line-height:1;
+}
+.countdown-item .label{
+  font-size:0.55rem;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--text-dim);
+  margin-top:0.3rem;
+}
+.notify{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1.5rem 2rem;
+  margin-bottom:1.5rem;
+}
+.notify p{
+  font-size:0.75rem;
+  margin-bottom:0.8rem;
+  color:var(--text-dim);
+}
+.notify-form{
+  display:flex;
+  gap:0.5rem;
+}
+.notify-form input{
+  flex:1;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:0.65rem 1rem;
+  font-size:0.8rem;
+  color:var(--text);
+  font-family:inherit;
+  outline:none;
+  transition:border-color 0.3s;
+}
+.notify-form input:focus{border-color:var(--green);}
+.notify-form input::placeholder{color:var(--text-dim);}
+.notify-form button{
+  background:var(--green);
+  color:var(--text);
+  border:none;
+  border-radius:var(--radius-sm);
+  padding:0.65rem 1.4rem;
+  font-size:0.75rem;
+  font-weight:600;
+  cursor:pointer;
+  font-family:inherit;
+  transition:background 0.3s,transform 0.2s;
+  white-space:nowrap;
+}
+.notify-form button:hover{background:var(--green-light);transform:scale(1.02);}
+.notify-form button:active{transform:scale(0.98);}
+.social{
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  margin-top:1rem;
+}
+.social a{
+  color:var(--text-dim);
+  font-size:0.75rem;
+  text-decoration:none;
+  transition:color 0.3s;
+  display:flex;align-items:center;gap:0.3rem;
+}
+.social a:hover{color:var(--green-light);}
+.footer-text{
+  margin-top:2.5rem;
+  font-size:0.6rem;
+  color:var(--text-dim);
+  position:relative;z-index:2;
+}
+.footer-text a{color:#fff;text-decoration:none;}
+.footer-text a:hover{text-decoration:underline;}
+@media(max-width:600px){
+  .logo{width:160px;}
+  h1{font-size:1.8rem;}
+  body{padding:1.5rem;}
+}
+@media(max-width:480px){
+  body::before{background:url("c-image/the backyard 3.jpg") center/cover;}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img src="c-image/backyard logo.png" alt="The Backyard" class="logo">
+  <div class="badge">Coming Soon</div>
+  <h1>Where nature meets <em>the table</em></h1>
+  <p>We're putting the final touches on something special. A space where great food, coffee, and good company come together under the open sky.</p>
+
+  <div class="social">
+    <a href="https://www.instagram.com/thebackyard_belgaum/" target="_blank">📷 Instagram</a>
+  </div>
+</div>
+
+<div class="footer-text">
+  &copy; 2026 The Backyard Bistro &amp; Grill &middot; Belgaum<br>
+  <a href="https://www.instagram.com/techie.jatin" target="_blank">Developed by @techie.jatin</a>
+</div>
+
+<script>
+(function(){
+  var target=new Date();
+  target.setDate(target.getDate()+30);
+  target.setHours(10,0,0,0);
+  function tick(){
+    var now=new Date();
+    var diff=target-now;
+    if(diff<0){diff=0;}
+    var d=Math.floor(diff/86400000);
+    var h=Math.floor((diff%86400000)/3600000);
+    var m=Math.floor((diff%3600000)/60000);
+    var s=Math.floor((diff%60000)/1000);
+    document.getElementById('days').textContent=String(d).padStart(2,'0');
+    document.getElementById('hours').textContent=String(h).padStart(2,'0');
+    document.getElementById('minutes').textContent=String(m).padStart(2,'0');
+    document.getElementById('seconds').textContent=String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick,1000);
+})();
+</script>
+
+</body>
+</html>
