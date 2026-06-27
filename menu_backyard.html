@@ -1046,7 +1046,8 @@ footer{
   <h1 class="hero-title reveal reveal-d1"><img src="c-image/backyard logo.png" alt="The Backyard"></h1>
   <p class="hero-sub reveal reveal-d2">Embark on a gastronomic adventure at Belgaum's popular fusion food destination where charming outdoor seating amidst lush greenery sets the stage for a truly unforgettable dining adventure.</p>
   <div class="hero-actions reveal reveal-d3">
-    <a href="#menu" class="btn-primary">Explore Menu ↓</a>
+    <a href="#menu" class="btn-primary">Food Menu ↓</a>
+    <a href="#menu" class="btn-primary" onclick="filterBeverages();return false;">Beverages Menu ↓</a>
     <a href="https://www.instagram.com/thebackyard_belgaum/" target="_blank" class="btn-secondary">Follow Us <span class="arrow">→</span></a>
   </div>
 </section>
@@ -1054,7 +1055,7 @@ footer{
 <!-- STATS -->
 <section class="stats reveal">
   <div class="stats-inner">
-    <div class="stat"><div class="stat-num"><span class="stat-count" data-target="87">0</span><span class="stat-plus">+</span></div><div class="stat-label">Menu Items</div></div>
+    <div class="stat"><div class="stat-num"><span class="stat-count" data-target="139">0</span><span class="stat-plus">+</span></div><div class="stat-label">Menu Items</div></div>
     <div class="stat"><div class="stat-num"><span class="stat-count" data-target="1000">0</span><span class="stat-plus">+</span></div><div class="stat-label">Happy Customers</div></div>
     <div class="stat"><div class="stat-num"><span class="stat-count" data-target="4.9">0</span></div><div class="stat-label">★ Rating</div></div>
   </div>
@@ -1121,6 +1122,10 @@ footer{
       <button class="cat-tab" data-cat="burgers-sando">Burgers &amp; Sando</button>
       <button class="cat-tab" data-cat="kids-menu">Kids Menu</button>
       <button class="cat-tab" data-cat="breakfast">Breakfast</button>
+      <button class="cat-tab" data-cat="organic-teas">Organic Teas</button>
+      <button class="cat-tab" data-cat="coffees">Coffees</button>
+      <button class="cat-tab" data-cat="noble-coolers">Noble Coolers</button>
+      <button class="cat-tab" data-cat="milk-shakes">Milk Shakes</button>
     </div>
 
     <div class="menu-list active" id="list-salads">
@@ -1267,6 +1272,82 @@ footer{
         <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Smoothie Bowl</div><div class="mi-tags"><img src="c-image/gluten-free.png" class="mi-badge-icon" alt="GF"> <img src="c-image/lactose-free.png" class="mi-badge-icon" alt="LF"></div><div class="mi-note">A thick blend of chilled fruits topped with seeds, shredded coconut, and fresh berries.</div><div class="mi-meta"><span class="mi-price">₹329</span></div></div></div>
         <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Granola Bowl</div><div class="mi-note">Crunchy honey-baked oats served with your choice of chilled milk or yogurt and fresh fruit.</div><div class="mi-meta"><span class="mi-price">₹329</span></div></div></div>
         <div class="menu-item reveal"><div class="menu-item-img"><img onerror="this.onerror=null;this.src='c-image/food.png'" src="c-image/chicken protien bowl.jpeg" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Protein Bowl (Veg/Meat Option)</div><div class="mi-tags"><img src="c-image/gluten-free.png" class="mi-badge-icon" alt="GF"> <img src="c-image/lactose-free.png" class="mi-badge-icon" alt="LF"></div><div class="mi-note">A nutrient-packed powerhouse bowl featuring grains, greens, and your choice of protein.</div><div class="mi-meta"><span class="mi-price">₹329</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="menu-list active" id="list-organic-teas">
+      <div class="category-heading">Organic Teas</div>
+      <div class="menu-grid">
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Pure Green</div><div class="mi-note">Organic green tea — light, earthy, and antioxidant-rich.</div><div class="mi-meta"><span class="mi-price">₹99</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Peppermint</div><div class="mi-note">Organic peppermint tea — cooling and caffeine-free.</div><div class="mi-meta"><span class="mi-price">₹99</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Chamomile</div><div class="mi-note">Organic chamomile tea — floral, soothing, and caffeine-free.</div><div class="mi-meta"><span class="mi-price">₹99</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Hibiscus</div><div class="mi-note">Organic hibiscus tea — tangy, vibrant, and rich in vitamin C.</div><div class="mi-meta"><span class="mi-price">₹99</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Rose</div><div class="mi-note">Organic rose tea — delicate, aromatic, and floral.</div><div class="mi-meta"><span class="mi-price">₹99</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Blue Pea Butterfly</div><div class="mi-note">Organic blue pea tea — naturally vibrant and antioxidant-rich.</div><div class="mi-meta"><span class="mi-price">₹99</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Tulsi</div><div class="mi-note">Organic tulsi tea — aromatic holy basil with warming notes.</div><div class="mi-meta"><span class="mi-price">₹99</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="menu-list active" id="list-coffees">
+      <div class="category-heading">Coffees</div>
+      <div class="menu-grid">
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Espresso</div><div class="mi-note">Rich, bold single-origin espresso shot.</div><div class="mi-meta"><span class="mi-price">₹99</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Americano (Hot/Iced)</div><div class="mi-note">Espresso lengthened with hot or cold water — smooth and bold.</div><div class="mi-meta"><span class="mi-price">₹129</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Classic Cold Coffee</div><div class="mi-note">Chilled coffee indulgence. Add-on: Caramel, Vanilla, Irish, Hazelnut (+₹39).</div><div class="mi-meta"><span class="mi-price">₹169</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Dark Cold Coffee</div><div class="mi-note">Intense, bold cold coffee for true coffee lovers.</div><div class="mi-meta"><span class="mi-price">₹199</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Iced Latte</div><div class="mi-note">Espresso over chilled milk, served over ice. Add-on: Caramel, Vanilla, Irish, Hazelnut (+₹39).</div><div class="mi-meta"><span class="mi-price">₹189</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Cranberry Espresso</div><div class="mi-note">Backyard-style espresso topped with cranberry juice, aerated ale &amp; over ice.</div><div class="mi-meta"><span class="mi-price">₹189</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Raspberry Espresso Foam</div><div class="mi-note">Espresso topped with tart and sweet raspberry-infused milk foam.</div><div class="mi-meta"><span class="mi-price">₹199</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Blueberry Espresso Foam</div><div class="mi-note">Bold espresso finished with a sweet blueberry-infused foam.</div><div class="mi-meta"><span class="mi-price">₹199</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Cappuccino</div><div class="mi-note">Espresso with velvety steamed milk and thick foam. Add-on: Caramel, Vanilla, Irish, Hazelnut (+₹39).</div><div class="mi-meta"><span class="mi-price">₹169</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Café Latte</div><div class="mi-note">Smooth espresso with steamed milk. Add-on: Caramel, Vanilla, Irish, Hazelnut (+₹39).</div><div class="mi-meta"><span class="mi-price">₹169</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Macchiato</div><div class="mi-note">Espresso marked with a dollop of steamed milk foam.</div><div class="mi-meta"><span class="mi-price">₹169</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Flat White</div><div class="mi-note">Double espresso with micro-foamed milk — silky and strong.</div><div class="mi-meta"><span class="mi-price">₹169</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Irish Coffee</div><div class="mi-note">Classic Irish coffee — smooth, warm, and indulgent.</div><div class="mi-meta"><span class="mi-price">₹169</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Spanish Latte</div><div class="mi-note">Espresso with sweetened condensed milk for a creamy treat.</div><div class="mi-meta"><span class="mi-price">₹199</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Vietnamese (Hot/Iced)</div><div class="mi-note">Bold espresso with sweetened condensed milk — served hot or iced.</div><div class="mi-meta"><span class="mi-price">₹199</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Affogato</div><div class="mi-note">Espresso poured over vanilla ice cream — a sweet pick-me-up.</div><div class="mi-meta"><span class="mi-price">₹169</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Tiramisu Espresso</div><div class="mi-note">Espresso with sweet mascarpone cream, dusted with cocoa.</div><div class="mi-meta"><span class="mi-price">₹199</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Mont Blanc</div><div class="mi-note">Signature espresso creation — rich and luxurious.</div><div class="mi-meta"><span class="mi-price">₹169</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Pistachio Espresso</div><div class="mi-note">Espresso with a nutty pistachio twist.</div><div class="mi-meta"><span class="mi-price">₹199</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Café Mocha</div><div class="mi-note">Espresso with chocolate and steamed milk — a classic indulgence.</div><div class="mi-meta"><span class="mi-price">₹199</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Hot Chocolate</div><div class="mi-note">Rich, creamy hot cocoa. Add-on: Hazelnut, Vanilla, Caramel (+₹39).</div><div class="mi-meta"><span class="mi-price">₹249</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="menu-list active" id="list-noble-coolers">
+      <div class="category-heading">Noble Coolers</div>
+      <div class="menu-grid">
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Packaged Bottled Water</div><div class="mi-note">Premium packaged drinking water.</div><div class="mi-meta"><span class="mi-price">₹30</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Classic Lemonade</div><div class="mi-note">Freshly squeezed lemonade, perfectly sweetened.</div><div class="mi-meta"><span class="mi-price">₹119</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Fresh Watermelon Juice</div><div class="mi-note">Chilled, refreshing watermelon juice.</div><div class="mi-meta"><span class="mi-price">₹149</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Tropical Tremble</div><div class="mi-note">Muddled mandarin and mint topped with orange juice and cranberry.</div><div class="mi-meta"><span class="mi-price">₹249</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">The Backyard Colada</div><div class="mi-note">Signature drink with orange, pineapple, coconut milk and vanilla.</div><div class="mi-meta"><span class="mi-price">₹249</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Virgin Pinacolada</div><div class="mi-note">Pineapple juice, coconut milk &amp; coconut syrup blended to perfection.</div><div class="mi-meta"><span class="mi-price">₹249</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Caribbean Colada</div><div class="mi-note">Pineapple juice, coconut milk &amp; coconut syrup — tropical bliss.</div><div class="mi-meta"><span class="mi-price">₹249</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Blooming Blossom</div><div class="mi-note">Fresh watermelon, cranberry, rose &amp; cherry blended together.</div><div class="mi-meta"><span class="mi-price">₹249</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Smoked Pineapple &amp; Chilli</div><div class="mi-note">Tropical pineapple with a hint of smoked chilli, served over ice.</div><div class="mi-meta"><span class="mi-price">₹249</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Elder Flower &amp; Lavender Spritzer</div><div class="mi-note">Elder flower syrup blended with soothing lavender and sparkling water.</div><div class="mi-meta"><span class="mi-price">₹249</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Charcoal Lemonade with Mint</div><div class="mi-note">Activated charcoal lemonade with fresh mint and lime.</div><div class="mi-meta"><span class="mi-price">₹249</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Lavender Lemon &amp; Blueberry</div><div class="mi-note">Lavender-infused lemonade with bursts of blueberry.</div><div class="mi-meta"><span class="mi-price">₹249</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Tropical Paradise</div><div class="mi-note">Fresh pomegranate, mandarin, mint, lime and fizz.</div><div class="mi-meta"><span class="mi-price">₹249</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">The Classic Mojito</div><div class="mi-note">Choice of Watermelon / Kiwi / Apple flavour.</div><div class="mi-meta"><span class="mi-price">₹199</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Shaken Iced Tea</div><div class="mi-note">Peach, Lemon, Passion Fruit, Lavender, Rose &amp; Cherry Blue Pea Butterfly.</div><div class="mi-meta"><span class="mi-price">₹219</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Pomo Punch Nade</div><div class="mi-note">Kokum syrup, black salt, Jaljeera, pomegranate juice &amp; mint.</div><div class="mi-meta"><span class="mi-price">₹219</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">The Pink Lady</div><div class="mi-note">Apple juice, pineapple juice, pomegranate, passion fruit &amp; lime.</div><div class="mi-meta"><span class="mi-price">₹199</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="menu-list active" id="list-milk-shakes">
+      <div class="category-heading">Milk Shakes</div>
+      <div class="menu-grid">
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Summer Berry Shake</div><div class="mi-note">Creamy milkshake blended with summer berries.</div><div class="mi-meta"><span class="mi-price">₹299</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Orange &amp; Passionfruit Shake</div><div class="mi-note">Citrus and tropical fruit milkshake.</div><div class="mi-meta"><span class="mi-price">₹299</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Lotus Biscoff Shake</div><div class="mi-note">Indulgent cookie butter milkshake.</div><div class="mi-meta"><span class="mi-price">₹299</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Cold Chocolate Shake</div><div class="mi-note">Rich, creamy chocolate milkshake.</div><div class="mi-meta"><span class="mi-price">₹299</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Salted Caramel Shake</div><div class="mi-note">Sweet and salty caramel milkshake.</div><div class="mi-meta"><span class="mi-price">₹299</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Cookies &amp; Cream Shake</div><div class="mi-note">Classic cookies and cream milkshake.</div><div class="mi-meta"><span class="mi-price">₹299</span></div></div></div>
+        <div class="menu-item reveal"><div class="menu-item-img"><img src="c-image/food.png" alt="" loading="lazy"></div><div class="menu-item-body"><div class="mi-name">Roasted Almond &amp; Chocolate Shake</div><div class="mi-note">Nutty roasted almond blended with rich chocolate.</div><div class="mi-meta"><span class="mi-price">₹299</span></div></div></div>
       </div>
     </div>
 
@@ -1432,6 +1513,10 @@ footer{
   <button class="m-cat" data-cat="burgers-sando">Burgers &amp; Sando</button>
   <button class="m-cat" data-cat="kids-menu">Kids Menu</button>
   <button class="m-cat" data-cat="breakfast">Breakfast</button>
+  <button class="m-cat" data-cat="organic-teas">Organic Teas</button>
+  <button class="m-cat" data-cat="coffees">Coffees</button>
+  <button class="m-cat" data-cat="noble-coolers">Noble Coolers</button>
+  <button class="m-cat" data-cat="milk-shakes">Milk Shakes</button>
 </div>
 
 <div class="lightbox" id="lightbox">
@@ -1573,6 +1658,23 @@ document.querySelectorAll('.cat-tab').forEach(tab=>{
   });
 });
 
+function filterBeverages(){
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.menu-list').forEach(l=>l.classList.remove('active'));
+  ['organic-teas','coffees','noble-coolers','milk-shakes'].forEach(function(cat){
+    var tab=document.querySelector('.cat-tab[data-cat="'+cat+'"]');
+    if(tab)tab.classList.add('active');
+    var list=document.getElementById('list-'+cat);
+    if(list)list.classList.add('active');
+  });
+  var mLab=document.querySelector('.mobile-cat-label');
+  if(mLab)mLab.textContent='Beverages';
+  var menuSec=document.getElementById('menu');
+  if(menuSec)menuSec.scrollIntoView({behavior:'smooth',block:'start'});
+  var panel=document.getElementById('catPanel');
+  if(panel)panel.classList.remove('open');
+}
+
 // ====== MENU IMAGES ======
 (function(){
   const images={
@@ -1585,7 +1687,11 @@ document.querySelectorAll('.cat-tab').forEach(tab=>{
     flatbread:['https://foodish-api.com/images/pizza/pizza76.jpg','https://foodish-api.com/images/pizza/pizza19.jpg','https://foodish-api.com/images/pizza/pizza22.jpg','https://foodish-api.com/images/pizza/pizza39.jpg'],
     'burgers-sando':['https://foodish-api.com/images/burger/burger42.jpg','https://foodish-api.com/images/burger/burger59.jpg','https://foodish-api.com/images/burger/burger14.jpg','https://foodish-api.com/images/burger/burger11.jpg'],
     'kids-menu':['https://foodish-api.com/images/dessert/dessert18.jpg','https://foodish-api.com/images/dessert/dessert3.jpg','https://foodish-api.com/images/pizza/pizza39.jpg','https://foodish-api.com/images/pasta/pasta22.jpg'],
-    breakfast:['https://foodish-api.com/images/dessert/dessert30.jpg','https://foodish-api.com/images/dessert/dessert1.jpg','https://foodish-api.com/images/dessert/dessert25.jpg','https://foodish-api.com/images/dessert/dessert2.jpg']
+    breakfast:['https://foodish-api.com/images/dessert/dessert30.jpg','https://foodish-api.com/images/dessert/dessert1.jpg','https://foodish-api.com/images/dessert/dessert25.jpg','https://foodish-api.com/images/dessert/dessert2.jpg'],
+    'organic-teas':['https://foodish-api.com/images/dessert/dessert30.jpg','https://foodish-api.com/images/dessert/dessert2.jpg','https://foodish-api.com/images/dessert/dessert1.jpg','https://foodish-api.com/images/dessert/dessert18.jpg'],
+    coffees:['https://foodish-api.com/images/dessert/dessert30.jpg','https://foodish-api.com/images/dessert/dessert2.jpg','https://foodish-api.com/images/dessert/dessert1.jpg','https://foodish-api.com/images/dessert/dessert18.jpg'],
+    'noble-coolers':['https://foodish-api.com/images/dessert/dessert30.jpg','https://foodish-api.com/images/dessert/dessert2.jpg','https://foodish-api.com/images/dessert/dessert1.jpg','https://foodish-api.com/images/dessert/dessert18.jpg'],
+    'milk-shakes':['https://foodish-api.com/images/dessert/dessert30.jpg','https://foodish-api.com/images/dessert/dessert2.jpg','https://foodish-api.com/images/dessert/dessert1.jpg','https://foodish-api.com/images/dessert/dessert18.jpg']
   };
   document.querySelectorAll('.menu-list').forEach(list=>{
     const cat=list.id.replace('list-','');
@@ -1623,6 +1729,10 @@ const categoryCombos={
   'burgers-sando':{title:'Add loaded fries + thick shake',desc:'Crispy loaded cheese fries with bacon + hand-spun milkshake'},
   'kids-menu':{title:'Add dessert + juice box',desc:'Choice of ice cream scoop or brownie + apple juice box'},
   breakfast:{title:'Add fresh juice + premium coffee',desc:'Fresh-squeezed orange juice + house-blend coffee upgrade'},
+  'organic-teas':{title:'Add honey drizzle + lemon wedge',desc:'Pure honey on the side + fresh lemon wedge to complement your tea'},
+  coffees:{title:'Add biscotti + extra shot',desc:'Crunchy almond biscotti + double espresso shot'},
+  'noble-coolers':{title:'Add cookie + espresso shot',desc:'Freshly baked cookie + double espresso shot on the side'},
+  'milk-shakes':{title:'Add whipped cream + sprinkles',desc:'Extra dollop of whipped cream + rainbow sprinkles on top'},
 };
 function openUpsell(name,price,cat){
   const combo=categoryCombos[cat]||categoryCombos.sides;
