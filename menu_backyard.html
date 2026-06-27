@@ -1046,8 +1046,7 @@ footer{
   <h1 class="hero-title reveal reveal-d1"><img src="c-image/backyard logo.png" alt="The Backyard"></h1>
   <p class="hero-sub reveal reveal-d2">Embark on a gastronomic adventure at Belgaum's popular fusion food destination where charming outdoor seating amidst lush greenery sets the stage for a truly unforgettable dining adventure.</p>
   <div class="hero-actions reveal reveal-d3">
-    <a href="#menu" class="btn-primary">Food Menu ↓</a>
-    <a href="#menu" class="btn-primary" onclick="filterBeverages();return false;">Beverages Menu ↓</a>
+    <a href="#" class="btn-primary" onclick="openExplorePopup();return false;">Explore Menu ↓</a>
     <a href="https://www.instagram.com/thebackyard_belgaum/" target="_blank" class="btn-secondary">Follow Us <span class="arrow">→</span></a>
   </div>
 </section>
@@ -1126,6 +1125,13 @@ footer{
       <button class="cat-tab" data-cat="coffees">Coffees</button>
       <button class="cat-tab" data-cat="noble-coolers">Noble Coolers</button>
       <button class="cat-tab" data-cat="milk-shakes">Milk Shakes</button>
+      <button class="cat-tab" data-cat="desserts" style="display:none">Desserts</button>
+    </div>
+
+    <div class="menu-list" id="list-desserts">
+      <div class="category-heading">Desserts</div>
+      <div class="menu-grid">
+      </div>
     </div>
 
     <div class="menu-list active" id="list-salads">
@@ -1440,6 +1446,21 @@ footer{
 .upsell-card .uc-close-wrap{margin-top:1.25rem;}
 .upsell-card .uc-close{display:inline-flex;align-items:center;gap:0.4rem;background:var(--gold-dim);color:var(--gold);border:none;border-radius:50px;padding:0.55rem 1.4rem;font-size:0.8rem;font-weight:500;cursor:pointer;transition:all 0.25s;font-family:inherit;letter-spacing:0.02em;}
 .upsell-card .uc-close:hover{background:var(--gold);color:var(--text);}
+.explore-overlay{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+.explore-overlay.active{opacity:1;pointer-events:auto;}
+.explore-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem 1.5rem;max-width:420px;width:90%;text-align:center;transform:scale(0.9) translateY(20px);transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;}
+.explore-overlay.active .explore-card{transform:scale(1) translateY(0);}
+.explore-close{position:absolute;top:0.5rem;right:1rem;background:none;border:none;color:var(--text-muted);font-size:1.8rem;cursor:pointer;font-family:inherit;line-height:1;padding:0;}
+.explore-close:hover{color:var(--text);}
+.explore-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--text);margin:0 0 1.5rem;}
+.explore-options{display:flex;flex-direction:column;gap:0.75rem;}
+.explore-option{display:flex;flex-direction:column;align-items:center;gap:0.2rem;background:var(--gold-dim);border:1px solid transparent;border-radius:var(--radius-sm);padding:1rem;cursor:pointer;transition:all 0.25s;font-family:inherit;text-align:center;width:100%;}
+.explore-option:hover{background:var(--gold);border-color:var(--gold);}
+.explore-option-icon{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;color:var(--gold);background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0.25rem 0.6rem;line-height:1.4;}
+.explore-option-label{font-size:0.9rem;font-weight:600;color:var(--text);}
+.explore-option-desc{font-size:0.65rem;color:var(--text-muted);line-height:1.3;}
+.explore-option:hover .explore-option-label{color:#000;}
+.explore-option:hover .explore-option-desc{color:#333;}
 </style>
 <script>
 (function(){const w=document.getElementById('watermark');let x=Math.max(10,window.innerWidth-160),y=Math.max(10,window.innerHeight-40),dx=0.6,dy=0.4,paused=false,id;w.style.left=x+'px';w.style.top=y+'px';w.addEventListener('mouseenter',()=>{paused=true;if(id)cancelAnimationFrame(id);});w.addEventListener('mouseleave',()=>{paused=false;move();});function move(){if(paused)return;x+=dx;y+=dy;if(x<=10||x>=window.innerWidth-140)dx*=-1;if(y<=10||y>=window.innerHeight-30)dy*=-1;w.style.left=x+'px';w.style.top=y+'px';id=requestAnimationFrame(move);}move();window.addEventListener('resize',()=>{if(x>window.innerWidth-140)x=window.innerWidth-160;if(y>window.innerHeight-30)y=window.innerHeight-40;});})();
@@ -1496,6 +1517,30 @@ footer{
     </div>
     <div class="uc-close-wrap">
       <button class="uc-close" onclick="closeUpsell()">✕ Sounds good</button>
+    </div>
+  </div>
+</div>
+
+<div class="explore-overlay" id="exploreOverlay">
+  <div class="explore-card">
+    <button class="explore-close" onclick="closeExplorePopup()">&times;</button>
+    <div class="explore-title">What are you craving?</div>
+    <div class="explore-options">
+      <button class="explore-option" onclick="filterFood()">
+        <span class="explore-option-icon">FOOD</span>
+        <span class="explore-option-label">Food Menu</span>
+        <span class="explore-option-desc">Salads · Soups · Sides · Appetizers · Mains · Pasta &amp; Risotto · Flatbread · Burgers · Kids Menu · Breakfast</span>
+      </button>
+      <button class="explore-option" onclick="filterBeverages()">
+        <span class="explore-option-icon">BEV</span>
+        <span class="explore-option-label">Beverages Menu</span>
+        <span class="explore-option-desc">Organic Teas · Coffees · Noble Coolers · Milk Shakes</span>
+      </button>
+      <button class="explore-option" onclick="filterDesserts()">
+        <span class="explore-option-icon">SWEET</span>
+        <span class="explore-option-label">Desserts Menu</span>
+        <span class="explore-option-desc">Sweet treats &amp; indulgent desserts</span>
+      </button>
     </div>
   </div>
 </div>
@@ -1658,7 +1703,42 @@ document.querySelectorAll('.cat-tab').forEach(tab=>{
   });
 });
 
+function openExplorePopup(){
+  document.getElementById('exploreOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeExplorePopup(){
+  document.getElementById('exploreOverlay').classList.remove('active');
+  document.body.style.overflow='';
+}
+document.getElementById('exploreOverlay').addEventListener('click',function(e){
+  if(e.target===this)closeExplorePopup();
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeExplorePopup();
+});
+
+function filterFood(){
+  closeExplorePopup();
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.menu-list').forEach(l=>l.classList.remove('active'));
+  var foodCats=['salads','soups','sides','appetizers','mains','pasta-risotto','flatbread','burgers-sando','kids-menu','breakfast'];
+  foodCats.forEach(function(cat){
+    var tab=document.querySelector('.cat-tab[data-cat="'+cat+'"]');
+    if(tab)tab.classList.add('active');
+    var list=document.getElementById('list-'+cat);
+    if(list)list.classList.add('active');
+  });
+  var mLab=document.querySelector('.mobile-cat-label');
+  if(mLab)mLab.textContent='Food Menu';
+  var menuSec=document.getElementById('menu');
+  if(menuSec)menuSec.scrollIntoView({behavior:'smooth',block:'start'});
+  var panel=document.getElementById('catPanel');
+  if(panel)panel.classList.remove('open');
+}
+
 function filterBeverages(){
+  closeExplorePopup();
   document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.menu-list').forEach(l=>l.classList.remove('active'));
   ['organic-teas','coffees','noble-coolers','milk-shakes'].forEach(function(cat){
@@ -1669,6 +1749,22 @@ function filterBeverages(){
   });
   var mLab=document.querySelector('.mobile-cat-label');
   if(mLab)mLab.textContent='Beverages';
+  var menuSec=document.getElementById('menu');
+  if(menuSec)menuSec.scrollIntoView({behavior:'smooth',block:'start'});
+  var panel=document.getElementById('catPanel');
+  if(panel)panel.classList.remove('open');
+}
+
+function filterDesserts(){
+  closeExplorePopup();
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.menu-list').forEach(l=>l.classList.remove('active'));
+  var tab=document.querySelector('.cat-tab[data-cat="desserts"]');
+  if(tab)tab.classList.add('active');
+  var list=document.getElementById('list-desserts');
+  if(list)list.classList.add('active');
+  var mLab=document.querySelector('.mobile-cat-label');
+  if(mLab)mLab.textContent='Desserts';
   var menuSec=document.getElementById('menu');
   if(menuSec)menuSec.scrollIntoView({behavior:'smooth',block:'start'});
   var panel=document.getElementById('catPanel');
@@ -1691,7 +1787,8 @@ function filterBeverages(){
     'organic-teas':['https://foodish-api.com/images/dessert/dessert30.jpg','https://foodish-api.com/images/dessert/dessert2.jpg','https://foodish-api.com/images/dessert/dessert1.jpg','https://foodish-api.com/images/dessert/dessert18.jpg'],
     coffees:['https://foodish-api.com/images/dessert/dessert30.jpg','https://foodish-api.com/images/dessert/dessert2.jpg','https://foodish-api.com/images/dessert/dessert1.jpg','https://foodish-api.com/images/dessert/dessert18.jpg'],
     'noble-coolers':['https://foodish-api.com/images/dessert/dessert30.jpg','https://foodish-api.com/images/dessert/dessert2.jpg','https://foodish-api.com/images/dessert/dessert1.jpg','https://foodish-api.com/images/dessert/dessert18.jpg'],
-    'milk-shakes':['https://foodish-api.com/images/dessert/dessert30.jpg','https://foodish-api.com/images/dessert/dessert2.jpg','https://foodish-api.com/images/dessert/dessert1.jpg','https://foodish-api.com/images/dessert/dessert18.jpg']
+    'milk-shakes':['https://foodish-api.com/images/dessert/dessert30.jpg','https://foodish-api.com/images/dessert/dessert2.jpg','https://foodish-api.com/images/dessert/dessert1.jpg','https://foodish-api.com/images/dessert/dessert18.jpg'],
+    desserts:['https://foodish-api.com/images/dessert/dessert30.jpg','https://foodish-api.com/images/dessert/dessert2.jpg','https://foodish-api.com/images/dessert/dessert1.jpg','https://foodish-api.com/images/dessert/dessert18.jpg']
   };
   document.querySelectorAll('.menu-list').forEach(list=>{
     const cat=list.id.replace('list-','');
@@ -1733,6 +1830,7 @@ const categoryCombos={
   coffees:{title:'Add biscotti + extra shot',desc:'Crunchy almond biscotti + double espresso shot'},
   'noble-coolers':{title:'Add cookie + espresso shot',desc:'Freshly baked cookie + double espresso shot on the side'},
   'milk-shakes':{title:'Add whipped cream + sprinkles',desc:'Extra dollop of whipped cream + rainbow sprinkles on top'},
+  desserts:{title:'Add ice cream scoop',desc:'Extra scoop of vanilla ice cream'},
 };
 function openUpsell(name,price,cat){
   const combo=categoryCombos[cat]||categoryCombos.sides;
